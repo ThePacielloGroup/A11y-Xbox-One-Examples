@@ -1,0 +1,100 @@
+﻿<Page
+    x:Class="Paciello_Group_A11y_Xbox_One_Examples.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paciello_Group_A11y_Xbox_One_Examples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="White">
+
+    <Grid>
+        <Grid AutomationProperties.LandmarkType="Custom" AutomationProperties.LocalizedLandmarkType="Banner">
+            <Image x:Name="logo" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="332" Source="/Assets/TPG_Logo_color.png" Margin="-36,-10,0,0" AutomationProperties.Name="The Paciello Group"/>
+        </Grid>
+        <Grid AutomationProperties.LandmarkType="Navigation">
+            <Button x:Name="BackButton" Click="Back_Click" Style="{StaticResource NavigationBackButtonNormalStyle}" Margin="-36,38,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" AutomationProperties.Name="Go Back to Home" Foreground="Black"/>
+        </Grid>
+        <Grid AutomationProperties.LandmarkType="Main" Margin="0,0,0,32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="53*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="446*"/>
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Left" Margin="18,41,0,0" Text="Accessibility Examples" TextWrapping="Wrap" VerticalAlignment="Top" AutomationProperties.HeadingLevel="Level1" FontSize="36" FontFamily="Arial" FontWeight="Bold" Foreground="Black" Grid.RowSpan="3"/>
+            <Pivot Margin="18,20.4,0,0" RequestedTheme="Light" FontFamily="Segoe UI" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                <PivotItem Header="Page Structure">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Left" Margin="10,9,0,0" Text="Providing Page Structure" TextWrapping="Wrap" VerticalAlignment="Top" AutomationProperties.HeadingLevel="Level2" FontSize="24" FontFamily="Arial" FontWeight="Bold" Foreground="Black"/>
+                            <RichTextBlock HorizontalAlignment="Left" Height="125" VerticalAlignment="Top" Width="585" Margin="10,42,0,0" FontFamily="Segoe UI" RenderTransformOrigin="0.507,0.486">
+                                <Paragraph FontFamily="Segoe UI">
+                                    <Span FontFamily="Courier New">RichTextBlock</Span> elements can be used to create blocks of text that use
+                                    <Bold>Bold</Bold> ,
+                                    <Italic>Italic</Italic> , and
+                                    <Underline>underlined</Underline> font styles.
+                                </Paragraph>
+                                <Paragraph FontFamily="Segoe UI">
+                                    It can also be used to divide large chunks of text into groups of related sentences (e.g., paragraphs). So that screen reading software reads the related sentences together, but stops between groupings.
+                                </Paragraph>
+                            </RichTextBlock>
+                            <TextBlock HorizontalAlignment="Left" Margin="10,155,0,0" Text="Semantic Lists" TextWrapping="Wrap" VerticalAlignment="Top" AutomationProperties.HeadingLevel="Level2" FontSize="24" FontFamily="Arial" FontWeight="Bold" Foreground="Black"/>
+                            <ListView Margin="0,188,0,-188">
+                                <ListViewItem>Cats</ListViewItem>
+                                <ListViewItem FontFamily="Segoe UI">Dogs</ListViewItem>
+                                <ListViewItem>Birds</ListViewItem>
+                                <ListViewItem>Fish</ListViewItem>
+                            </ListView>
+                            <TextBlock HorizontalAlignment="Left" Margin="10,375,0,0" Text="Similar to an HTML list but not the same. It is meant to house groups of interactive items." TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" Foreground="Black"/>
+                        </Grid>
+                    </ScrollViewer>
+                </PivotItem>
+                <PivotItem Header="Forms" RequestedTheme="Light">
+                    <Grid>
+                        <TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="24" FontFamily="Arial" FontWeight="Bold" Foreground="Black" Margin="10,8,527,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch">Accessible Form Fields</TextBlock>
+                        <Grid AutomationProperties.LandmarkType="Form">
+                            <TextBlock Margin="317,17,115,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35">Required Fields marked with an asterisk (*).</TextBlock>
+                            <StackPanel x:Name="LayoutRoot" Background="White" Margin="21,42,-21,-42" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Name="lbl_FirstName">First Name</TextBlock>
+                                    <TextBox AutomationProperties.LabeledBy="{Binding ElementName=lbl_FirstName}" x:Name="tbFirstName" Width="150" HorizontalAlignment="Stretch" Margin="6,0,0,0" VerticalAlignment="Stretch"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <TextBlock x:Name="lbl_LastName">Last Name</TextBlock>
+                                    <TextBox AutomationProperties.LabeledBy="{Binding ElementName=lbl_LastName}" x:Name="tbLastName" Width="150" HorizontalAlignment="Stretch" Margin="7,0,0,0" VerticalAlignment="Stretch"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <TextBlock x:Name="lbl_Address">Address</TextBlock>
+                                    <TextBox AutomationProperties.LabeledBy="{Binding ElementName=lbl_Address}" x:Name="tbAddress" Width="400" HorizontalAlignment="Stretch" Margin="24,0,0,0" VerticalAlignment="Stretch"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <TextBlock x:Name="lbl_City">City</TextBlock>
+                                    <TextBox AutomationProperties.LabeledBy="{Binding ElementName=lbl_City}" x:Name="tbCity" Width="150" HorizontalAlignment="Stretch" Margin="53,0,0,0" VerticalAlignment="Stretch"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <TextBlock x:Name="lbl_State">State</TextBlock>
+                                    <ComboBox AutomationProperties.LabeledBy="{Binding ElementName=lbl_State}" x:Name="tbState" Width="100" HorizontalAlignment="Stretch" Margin="44,0,0,0" VerticalAlignment="Stretch">
+                                        <ComboBoxItem>AK</ComboBoxItem>
+                                        <ComboBoxItem>IL</ComboBoxItem>
+                                        <ComboBoxItem>IN</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <TextBlock x:Name="lbl_Zip">Zip Code*</TextBlock>
+                                    <TextBox AutomationProperties.LabeledBy="{Binding ElementName=lbl_Zip}" x:Name="tbZip" Width="70" HorizontalAlignment="Stretch" Margin="13,0,0,0" VerticalAlignment="Stretch" AutomationProperties.IsRequiredForForm="True" AutomationProperties.HelpText="Zip Code should be 5 numbers"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="79,0,116.4,0">
+                                    <TextBlock x:Name="lbl_Zip_description">Zip code should be 5 numbers</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <Button Content="Submit" Margin="393,284,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF1A75BC" Foreground="White" FontFamily="Arial"/>
+                        </Grid>
+                    </Grid>
+                </PivotItem>
+            </Pivot>
+        </Grid>
+        <Grid AutomationProperties.LandmarkType="Custom" AutomationProperties.LocalizedLandmarkType="Footer">
+            <TextBlock Text="© Copyright 2019 Joe Humbert | The Paciello Group" Foreground="Black" Margin="10,470,18,-11" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+    </Grid>
+</Page>
